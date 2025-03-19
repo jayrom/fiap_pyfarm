@@ -79,18 +79,31 @@ while menu_principal!=0:
 
                     if menu_inserir==1:
 
+                    # Cultura amendoim
+
                         print("Cultura: " + culturas[0])
+
+                        fazenda_culturas[0] = True
+
                         fazenda_area_amendoim[0] = float(input("Comprimento (m): "))
                         fazenda_area_amendoim[1] = float(input("Largura (m): "))
+
+
+                        # Cálculo da área disponível para plantio (considerados 90% da área total informada)
+
                         fazenda_area_amendoim[2] = fazenda_area_amendoim[0] * fazenda_area_amendoim[1]
                         fazenda_area_amendoim[3] = fazenda_area_amendoim[2] * 0.9 / 10000
-                        print(fazenda_area_amendoim)
 
-                        
+                        print("Área total (m2): " + str(fazenda_area_amendoim[2]))
+                        print("Área útil (ha): " + str(fazenda_area_amendoim[3]))
 
+                        # Cálculo da quantidade de insumos necessários para a área útil calculada
 
-
-
+                        i=0
+                        while i<8:
+                            fazenda_insumos_amendoim[i] = fazenda_area_amendoim[3] * quant_insumos_amendoim[i]
+                            print(insumos[i] + ": " + str(fazenda_insumos_amendoim[i]))
+                            i+=1
 
 
                     elif menu_inserir==2:
