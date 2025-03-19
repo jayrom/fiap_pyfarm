@@ -32,9 +32,9 @@ Integrantes do grupo
 
 - [Edmilson Marciano](https://github.com/marciano64)
 - [Jayro Mazzi Junior](https://github.com/jayrom)
+- [Leonardo Camacho](leonardocamacho1983)
 - [Lucas Arcanjo](https://github.com/ArcanjoLucas00)
 - [Renan Pereira](http://github.com/renandpereira)
-- [Leonardo Camacho](leonardocamacho1983)
 
 Tecnologia
 ----------

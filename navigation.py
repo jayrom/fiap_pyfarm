@@ -1,23 +1,43 @@
 
 # Inicializar vetores
 
+# Culturas tratadas pela aplicação
 culturas = ["Amendoim", "Milho"]
 
+# Insumos necessários para as culturas contempladas
+insumos = ["Calcário", "Gesso agrícola", "Nitrogênio", "Fósforo", "Potássio", "Semente", "Herbicida", "Inseticida", "Fungicida"]
 
+# Quantidade de insumos necessários para cada cultura, por hectare, por safra
+quant_insumos_amendoim = [3000, 800, 0, 65, 45, 150000, 2.5, 1.5, 1.5]
+quant_insumos_milho = [3000, 800, 200, 100, 70, 110000, 3, 2, 1.5]
+
+# Culturas plantadas na fazenda
+fazenda_culturas = [False, False]
+
+# Características da área para plantio (comprimento, largura, área em m2 e área útil em ha) de amendoim, se houver. 
+fazenda_area_amendoim = [0, 0, 0, 0]
+
+# Características da área para plantio (comprimento, largura, área em m2 e área útil em ha) de milho, se houver.
+fazenda_area_milho = [0, 0, 0, 0]
+
+# Quantidades de insumos, por hectare útil, por safra, para plantio de amendoim da fazenda, se houver.
+fazenda_insumos_amendoim = [0, 0, 0, 0, 0, 0, 0, 0, 0]
+
+# Quantidades de insumos, por hectare útil, por safra, para plantio de milho da fazenda, se houver.
+fazenda_insumos_milho = [0, 0, 0, 0, 0, 0, 0, 0, 0]
+
+# Menu principal
 
 menu_principal = -1
 
 while menu_principal!=0:
 
-    # Menu principal
-
-    print("\n-------------------------------\n")
+    print("\n--------------------------------------------------------------\n")
     print("Menu principal")
-    print("-----------")
+    print("--------------")
     print("1. Gerenciar culturas")
     print("2. Informações meteorológicas")
     print("0. Sair")
-    print("\n-------------------------------\n")
 
     menu_principal = int(input("Opção: "))
 
@@ -29,7 +49,7 @@ while menu_principal!=0:
 
             # Menu Gerenciar culturas
 
-            print("\n-------------------------------\n")
+            print("\n--------------------------------------------------------------\n")
             print("Gerenciar culturas")
             print("-----------")
             print("1. Inserir cultura")
@@ -37,11 +57,8 @@ while menu_principal!=0:
             print("3. Remover cultura")
             print("9. Voltar")
             print("0. Sair")
-            print("\n-------------------------------\n")
 
-            menu_gerenciar = int(input("Opção-: "))
-
-            print(menu_gerenciar)
+            menu_gerenciar = int(input("Opção: "))
 
             if menu_gerenciar==1:
 
@@ -50,39 +67,43 @@ while menu_principal!=0:
                 while menu_inserir!=0:
                         
                     # Menu Inserir cultura
-
-                    print("\n-------------------------------\n")
+                    print("\n--------------------------------------------------------------\n")
                     print("Inserir cultura")
                     print("-----------")
                     print("1. " + culturas[0])
                     print("2. " + culturas[1])
                     print("9. Voltar")
                     print("0. Sair")
-                    print("\n-------------------------------\n")
 
                     menu_inserir = int(input("Opção: "))
 
                     if menu_inserir==1:
 
-                        menu_cultura = -1
-
                         print("Cultura: " + culturas[0])
+                        fazenda_area_amendoim[0] = float(input("Comprimento (m): "))
+                        fazenda_area_amendoim[1] = float(input("Largura (m): "))
+                        fazenda_area_amendoim[2] = fazenda_area_amendoim[0] * fazenda_area_amendoim[1]
+                        fazenda_area_amendoim[3] = fazenda_area_amendoim[2] * 0.9 / 10000
+                        print(fazenda_area_amendoim)
+
+                        
+
+
+
+
+
 
                     elif menu_inserir==2:
-                        print("Editar cultura")
-
-                    elif menu_inserir==3:
-                        print("Remover cultura")
+                        print("Cultura: " + culturas[1])
 
                     elif menu_inserir==9:
                         print("Voltar")
                         break
 
                     elif menu_inserir==0:
-                        print("Sair")
+                        menu_gerenciar=0
                         menu_principal=0
                         break
-
                     else:
                         print("Opção inválida")
 
@@ -97,7 +118,6 @@ while menu_principal!=0:
                 break
 
             elif menu_gerenciar==0:
-                print("Sair")
                 menu_principal=0
                 break
 
@@ -111,12 +131,11 @@ while menu_principal!=0:
         print("Informações meteorológicas - em construção")
 
     elif menu_principal==0:
-        print("\n-------------------------------\n")
-        print("Agradecemos por utilizar o PyFarm.")
-        print("\n-------------------------------\n")
         break
 
     else:
         print("Opção inválida")
     
-
+print("\n--------------------------------------------------------------")
+print("Agradecemos por utilizar o PyFarm.")
+print("--------------------------------------------------------------\n")
