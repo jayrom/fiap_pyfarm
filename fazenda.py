@@ -1,6 +1,6 @@
 
 print("Fazenda Tião B")
-x=0
+x = 0
 while (x == 0):
 
     plantas = ["amendoim", "alface", "milho", "soja"]
@@ -36,10 +36,10 @@ while (x == 0):
 
     if seleciona == 5:
         print("obrigado por usar o nosso programa")
-        x=1
+        x = 1
 
 
-    if x ==1:
+    if x == 1:
         break
 
 
