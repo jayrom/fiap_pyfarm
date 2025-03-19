@@ -107,7 +107,37 @@ while menu_principal!=0:
 
 
                     elif menu_inserir==2:
+
+                    # Cultura milho
+
                         print("Cultura: " + culturas[1])
+
+                        fazenda_culturas[1] = True
+
+                        fazenda_area_milho[0] = float(input("Comprimento (m): "))
+                        fazenda_area_milho[1] = float(input("Largura (m): "))   
+
+                        # Cálculo da área disponível para plantio (considerados 90% da área total informada)
+
+                        fazenda_area_milho[2] = fazenda_area_milho[0] * fazenda_area_milho[1]
+                        fazenda_area_milho[3] = fazenda_area_milho[2] * 0.9 / 10000     
+
+                        print("Área total (m2): " + str(fazenda_area_milho[2]))
+                        print("Área útil (ha): " + str(fazenda_area_milho[3]))
+
+                        # Cálculo da quantidade de insumos necessários para a área útil calculada
+
+                        i=0
+                        while i<8:
+                            fazenda_insumos_milho[i] = fazenda_area_milho[3] * quant_insumos_milho[i]
+                            print(insumos[i] + ": " + str(fazenda_insumos_milho[i]))
+                            i+=1
+                            
+
+
+
+
+
 
                     elif menu_inserir==9:
                         print("Voltar")
