@@ -1,9 +1,12 @@
 
 print("Fazenda Tião B")
-x = 0
+
+x=0
+plantas = ["amendoim", "alface", "milho", "soja"]
+
 while (x == 0):
 
-    plantas = ["amendoim", "alface", "milho", "soja"]
+
 
     print("""
 
