@@ -30,24 +30,24 @@ fazenda_insumos_milho = [0, 0, 0, 0, 0, 0, 0, 0, 0]
 
 menu_principal = -1
 
-while menu_principal!=0:
+while menu_principal != 0:
 
     print("\n--------------------------------------------------------------\n")
     print("Menu principal")
     print("--------------")
     print("1. Gerenciar culturas")
-    print("2. Informações meteorológicas")
+    print("2. Gerenciar insumos")
     print("0. Sair")
 
     menu_principal = int(input("Opção: "))
 
-    if menu_principal==1:
+    if menu_principal == 1:
 
         menu_gerenciar = -1
 
-        while menu_gerenciar!=0:
+        # Menu Gerenciar culturas
 
-            # Menu Gerenciar culturas
+        while menu_gerenciar != 0:
 
             print("\n--------------------------------------------------------------\n")
             print("Gerenciar culturas")
@@ -60,13 +60,14 @@ while menu_principal!=0:
 
             menu_gerenciar = int(input("Opção: "))
 
-            if menu_gerenciar==1:
+            if menu_gerenciar == 1:
 
                 menu_inserir = -1
 
-                while menu_inserir!=0:
+                # Menu Inserir cultura
+
+                while menu_inserir != 0:
                         
-                    # Menu Inserir cultura
                     print("\n--------------------------------------------------------------\n")
                     print("Inserir cultura")
                     print("-----------")
@@ -77,9 +78,9 @@ while menu_principal!=0:
 
                     menu_inserir = int(input("Opção: "))
 
-                    if menu_inserir==1:
-
                     # Cultura amendoim
+
+                    if menu_inserir == 1:
 
                         print("Cultura: " + culturas[0])
 
@@ -87,7 +88,6 @@ while menu_principal!=0:
 
                         fazenda_area_amendoim[0] = float(input("Comprimento (m): "))
                         fazenda_area_amendoim[1] = float(input("Largura (m): "))
-
 
                         # Cálculo da área disponível para plantio (considerados 90% da área total informada)
 
@@ -99,16 +99,17 @@ while menu_principal!=0:
 
                         # Cálculo da quantidade de insumos necessários para a área útil calculada
 
-                        i=0
-                        while i<8:
+                        i = 0
+                        while i < len(insumos):
                             fazenda_insumos_amendoim[i] = fazenda_area_amendoim[3] * quant_insumos_amendoim[i]
                             print(insumos[i] + ": " + str(fazenda_insumos_amendoim[i]))
-                            i+=1
+                            i += 1
 
-
-                    elif menu_inserir==2:
+                        print(len(fazenda_insumos_amendoim))
 
                     # Cultura milho
+
+                    elif menu_inserir == 2:
 
                         print("Cultura: " + culturas[1])
 
@@ -127,53 +128,113 @@ while menu_principal!=0:
 
                         # Cálculo da quantidade de insumos necessários para a área útil calculada
 
-                        i=0
-                        while i<8:
-                            fazenda_insumos_milho[i] = fazenda_area_milho[3] * quant_insumos_milho[i]
-                            print(insumos[i] + ": " + str(fazenda_insumos_milho[i]))
-                            i+=1
-                            
+                        j = 0
+                        while j < 8:
+                            fazenda_insumos_milho[j] = fazenda_area_milho[3] * quant_insumos_milho[j]
+                            print(insumos[j] + ": " + str(fazenda_insumos_milho[j]))
+                            j += 1
 
-
-
-
-
-
-                    elif menu_inserir==9:
+                    elif menu_inserir == 9:
                         print("Voltar")
                         break
 
-                    elif menu_inserir==0:
-                        menu_gerenciar=0
-                        menu_principal=0
+                    elif menu_inserir == 0:
+                        menu_gerenciar = 0
+                        menu_principal = 0
                         break
+
                     else:
                         print("Opção inválida")
 
-            elif menu_gerenciar==2:
+            elif menu_gerenciar == 2:
                 print("Visualizar/editar cultura")
 
-            elif menu_gerenciar==3:
+            elif menu_gerenciar == 3:
                 print("Remover cultura")
 
-            elif menu_gerenciar==9:
+            elif menu_gerenciar == 9:
                 print("Voltar")
                 break
 
-            elif menu_gerenciar==0:
-                menu_principal=0
+            elif menu_gerenciar == 0:
+                menu_principal = 0
                 break
 
             else:
                 print("Opção inválida")
 
-    elif menu_principal==2:
+    elif menu_principal == 2:
 
-    #Menu Informações meteorológicas
+    #Gerencir insumos
 
-        print("Informações meteorológicas - em construção")
+        while True:
 
-    elif menu_principal==0:
+            menu_insumos = -1
+
+            print("\n--------------------------------------------------------------\n")
+            print("Gerenciar insumos")
+            print("-----------")
+            print("1. Listar insumos")
+            print("2. Inserir insumo")
+            print("3. Editar insumo")
+            print("4. Remover insumo")
+            print("9. Voltar")
+            print("0. Sair")
+
+            menu_insumos = int(input("Opção: "))
+
+            if menu_insumos == 1:
+                print("Listar insumos")
+
+                i = 0
+                while i < len(insumos):
+                    print(insumos[i] + ": " + str(quant_insumos_amendoim[i]) + " kg/ha para amendoim e " + str(quant_insumos_milho[i]) + " kg/ha para milho")
+                    i += 1  
+
+            elif menu_insumos == 2:
+                
+                print("Inserir insumo")
+
+                insumo = input("Insumo: ")
+                insumos.append(insumo)
+                quant_amendoim = float(input("Quantidade para amendoim (kg/ha): "))
+                quant_insumos_amendoim.append(quant_amendoim)
+                quant_milho = float(input("Quantidade para milho (kg/ha): "))
+                quant_insumos_milho.append(quant_milho)
+
+            elif menu_insumos == 3:
+                print("Editar insumo")
+                insumo = input("Insumo: ")
+                if insumo in insumos:
+                    index = insumos.index(insumo)
+                    quant_amendoim = float(input("Quantidade para amendoim (kg/ha): "))
+                    quant_insumos_amendoim[index] = quant_amendoim
+                    quant_milho = float(input("Quantidade para milho (kg/ha): "))
+                    quant_insumos_milho[index] = quant_milho
+                else:
+                    print("Insumo não encontrado")
+
+            elif menu_insumos == 4:
+                print("Remover insumo")
+                insumo = input("Insumo: ") 
+                if insumo in insumos:
+                    index = insumos.index(insumo)
+                    insumos.remove(insumo)
+                    quant_insumos_amendoim.pop(index)
+                    quant_insumos_milho.pop(index)
+                else:
+                    print("Insumo não encontrado")
+
+            elif menu_insumos == 9:
+                print("Voltar")
+                break
+
+            elif menu_insumos == 0:
+                menu_principal = 0
+                break
+
+
+    elif menu_principal == 0:
         break
 
     else:
