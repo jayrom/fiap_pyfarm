@@ -146,15 +146,15 @@ while menu_principal != 0:
                         print("\nCultura cadastrada com sucesso.\n")
 
                         print("Com base nas dimensões informadas, temos:")
-                        print("Área total (m2): " + str(fazenda_area[2]))
-                        print("Área útil (ha): " + str(fazenda_area[3]))
+                        print(f"Área total (m2): {fazenda_area[2]:.2f}")
+                        print(f"Área útil (ha): {fazenda_area[3]:.2f}")
 
                         # Cálculo da quantidade de insumos necessários para a área útil calculada
                         print("\nPara essa área, os insumos necessários para um ano são:")
 
                         for i in range(len(insumos)):
                             fazenda_insumos[i] = fazenda_area[3] * quant_insumos[i]
-                            print(insumos[i] + ": " + str(fazenda_insumos[i]))
+                            print(f"{insumos[i]}: {fazenda_insumos[i]:.2f}")
 
                     elif menu_inserir == 9:
                         print("Voltar")
@@ -176,7 +176,7 @@ while menu_principal != 0:
                     print("--------------------------------------------------------------\n")
                     print("Editar cultura")
                     print("--------------")
-                    print("Permite editar as dimensões da área de plantio das \nculturas cadastradas.")
+                    print("Permite editar as dimensões da área de plantio das culturas cadastradas.")
                     print("\n--------------------------------------------------------------")
 
                     cultura = -1
@@ -209,7 +209,7 @@ while menu_principal != 0:
                         quant_insumos = quant_insumos_amendoim if cultura_index == 0 else quant_insumos_milho
                         fazenda_insumos = fazenda_insumos_amendoim if cultura_index == 0 else fazenda_insumos_milho
 
-                        print(f"Área atual de plantio: {fazenda_area[3]} ha")
+                        print(f"Área atual de plantio: {fazenda_area[3]:.2f} ha")
 
                         print("\nInforme as novas dimensões da área de plantio e ajuste de insumos:")
 
@@ -218,14 +218,14 @@ while menu_principal != 0:
 
                         fazenda_area[2] = fazenda_area[0] * fazenda_area[1]
                         fazenda_area[3] = fazenda_area[2] * 0.9 / 10000
-                        print(f"\n{cultura_nome} - Nova área útil: {fazenda_area[3]} ha")
+                        print(f"\n{cultura_nome} - Nova área de plantio: {fazenda_area[3]:.2f} ha")
 
                         print("\nRevisão dos insumos necessários para a cultura:")
                         print("--------------------------------------------------------------")
                         
                         for i in range(len(insumos)):
                             fazenda_insumos[i] = fazenda_area[3] * quant_insumos[i]
-                            print(f"{insumos[i]}: {fazenda_insumos[i]}")
+                            print(f"{insumos[i]}: {fazenda_insumos[i]:.2f}")
 
                 else:
                     input("Não há culturas cadastradas. Pressione Enter para continuar...\n")
@@ -269,6 +269,10 @@ while menu_principal != 0:
 
                         fazenda_area = [0, 0, 0, 0]
                         fazenda_insumos = [0, 0, 0, 0, 0, 0, 0, 0, 0]
+
+                        print(f"Cultura {cultura_nome} removida com sucesso.")
+                        input("Pressione Enter para continuar...\n")
+                        print("\n\n")
 
                 else:
                     input("Não há culturas cadastradas. Pressione Enter para continuar...\n")
@@ -339,6 +343,9 @@ while menu_principal != 0:
                 quant_milho = float(input("Quantidade para milho (kg/ha): "))
                 quant_insumos_milho.append(quant_milho)
 
+                print(f"Insumo {insumo} cadastrado com sucesso")
+                print("\nAo inserir um insumo, sugerimos recalcular as culturas para \najustar as quantidades necessárias. Utilize a opção 5 no menu Gerencir insumos.")
+
             elif menu_insumos == 3:
                 print("Editar insumo")
                 insumo = input("Insumo: ")
@@ -349,6 +356,9 @@ while menu_principal != 0:
                     quant_insumos_amendoim[index] = quant_amendoim
                     quant_milho = float(input("Quantidade para milho (kg/ha): "))
                     quant_insumos_milho[index] = quant_milho
+
+                    print(f"Insumo {insumo} editado com sucesso")
+                    print("\nAo editar um insumo, sugerimos recalcular as culturas para \najustar as quantidades necessárias. Utilize a opção 5 no menu Gerencir insumos.")
 
                 else:
                     print("Insumo não encontrado")
@@ -365,6 +375,9 @@ while menu_principal != 0:
                     insumos.remove(insumo)
                     quant_insumos_amendoim.pop(index)
                     quant_insumos_milho.pop(index)
+
+                    print(f"Insumo {insumo} removido com sucesso")
+                    print("\nAo remover um insumo, sugerimos recalcular as culturas para \najustar as quantidades necessárias. Utilize a opção 5 no menu Gerencir insumos.")
 
                 else:
                     print("Insumo não encontrado")
