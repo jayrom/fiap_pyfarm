@@ -1,3 +1,8 @@
+#---------------------------------------------------
+# fiap_pyfarm
+# A simple python application for farmers.
+# Por favor, leia o README.md para mais informações.
+#---------------------------------------------------
 
 # Inicializar vetores
 
@@ -26,7 +31,7 @@ fazenda_insumos_amendoim = [0, 0, 0, 0, 0, 0, 0, 0, 0]
 # Quantidades de insumos, por hectare útil, por safra, para plantio de milho da fazenda, se houver.
 fazenda_insumos_milho = [0, 0, 0, 0, 0, 0, 0, 0, 0]
 
-# Menu principal
+# Abertura
 
 print("\n\n\n\n----------------------------------------------------------------------------\n")
 print("PyFarm - Fazenda Esperança")
@@ -36,6 +41,8 @@ print("PyFarm permite que você gerencie as culturas de amendoim e milho da faze
 menu_principal = -1
 
 while menu_principal != 0:
+
+    #Menu principal
 
     print("Menu principal")
     print("--------------")
@@ -51,9 +58,11 @@ while menu_principal != 0:
 
         menu_gerenciar = -1
 
-        # Menu Gerenciar culturas
+        # Usando while / condição aninhados, para facilitar a navegação entre os menus.
 
         while menu_gerenciar != 0:
+
+            # Menu Gerenciar culturas
 
             print("--------------------------------------------------------------\n")
             print("Gerenciar culturas")
@@ -69,6 +78,8 @@ while menu_principal != 0:
             print("\n\n")
 
             if menu_gerenciar == 1:
+
+                # Verifica se já há o limite de culturas cadastradas
 
                 if fazenda_culturas == [True, True]:
 
@@ -96,65 +107,54 @@ while menu_principal != 0:
 
                     print("\n\n")
 
-                    # Cultura amendoim
+                    # Trata a opção selecionada, baseada no index da cultura, para evitar repetição de código.
 
-                    if menu_inserir == 1:
+                    if menu_inserir in [1, 2]:
+                        cultura_index = menu_inserir - 1
+                        cultura_nome = culturas[cultura_index]
 
-                        print("\nCultura: " + culturas[0])
-                        
-                        if fazenda_culturas[0]:
+                        print("\nCultura: " + cultura_nome)
+
+                        # Verifica se já há uma cultura cadastrada.
+                        if fazenda_culturas[cultura_index]:
                             print("\nCultura já cadastrada! Para outras opções, consulte o menu Gerenciar culturas.")
                             input("Pressione Enter para continuar...\n")
                             menu_inserir = 9
                             break
 
-                        fazenda_culturas[0] = True
+                        # Ativa a cultura no vetor de culturas da fazenda.
+                        fazenda_culturas[cultura_index] = True
 
-                        fazenda_area_amendoim[0] = float(input("Comprimento (m): "))
-                        fazenda_area_amendoim[1] = float(input("Largura (m): "))
+                        print("Defina a área (m) disponível para o plantio:")
 
-                        # Cálculo da área disponível para plantio (considerados 90% da área total informada)
+                        if cultura_index == 0:
+                            fazenda_area = fazenda_area_amendoim
+                            quant_insumos = quant_insumos_amendoim
+                            fazenda_insumos = fazenda_insumos_amendoim
+                        else:
+                            fazenda_area = fazenda_area_milho
+                            quant_insumos = quant_insumos_milho
+                            fazenda_insumos = fazenda_insumos_milho
 
-                        fazenda_area_amendoim[2] = fazenda_area_amendoim[0] * fazenda_area_amendoim[1]
-                        fazenda_area_amendoim[3] = fazenda_area_amendoim[2] * 0.9 / 10000
-
-                        print("\nÁrea total (m2): " + str(fazenda_area_amendoim[2]))
-                        print("Área útil (ha): " + str(fazenda_area_amendoim[3]))
-
-                        # Cálculo da quantidade de insumos necessários para a área útil calculada
-
-                        i = 0
-                        while i < len(insumos):
-                            fazenda_insumos_amendoim[i] = fazenda_area_amendoim[3] * quant_insumos_amendoim[i]
-                            print(insumos[i] + ": " + str(fazenda_insumos_amendoim[i]))
-                            i += 1
-
-                    # Cultura milho
-
-                    elif menu_inserir == 2:
-
-                        print("Cultura: " + culturas[1])
-
-                        fazenda_culturas[1] = True
-
-                        fazenda_area_milho[0] = float(input("Comprimento (m): "))
-                        fazenda_area_milho[1] = float(input("Largura (m): "))   
+                        fazenda_area[0] = float(input("Comprimento (m): "))
+                        fazenda_area[1] = float(input("Largura (m): "))
 
                         # Cálculo da área disponível para plantio (considerados 90% da área total informada)
+                        fazenda_area[2] = fazenda_area[0] * fazenda_area[1]
+                        fazenda_area[3] = fazenda_area[2] * 0.9 / 10000
 
-                        fazenda_area_milho[2] = fazenda_area_milho[0] * fazenda_area_milho[1]
-                        fazenda_area_milho[3] = fazenda_area_milho[2] * 0.9 / 10000     
+                        print("\nCultura cadastrada com sucesso.\n")
 
-                        print("Área total (m2): " + str(fazenda_area_milho[2]))
-                        print("Área útil (ha): " + str(fazenda_area_milho[3]))
+                        print("Com base nas dimensões informadas, temos:")
+                        print("Área total (m2): " + str(fazenda_area[2]))
+                        print("Área útil (ha): " + str(fazenda_area[3]))
 
                         # Cálculo da quantidade de insumos necessários para a área útil calculada
+                        print("\nPara essa área, os insumos necessários para um ano são:")
 
-                        j = 0
-                        while j < len(insumos):
-                            fazenda_insumos_milho[j] = fazenda_area_milho[3] * quant_insumos_milho[j]
-                            print(insumos[j] + ": " + str(fazenda_insumos_milho[j]))
-                            j += 1
+                        for i in range(len(insumos)):
+                            fazenda_insumos[i] = fazenda_area[3] * quant_insumos[i]
+                            print(insumos[i] + ": " + str(fazenda_insumos[i]))
 
                     elif menu_inserir == 9:
                         print("Voltar")
@@ -171,81 +171,112 @@ while menu_principal != 0:
 
             elif menu_gerenciar == 2:
 
-                print("--------------------------------------------------------------\n")
-                print("Editar cultura")
-                print("\n--------------")
+                if fazenda_culturas != [False, False]:
 
-                cultura = -1
+                    print("--------------------------------------------------------------\n")
+                    print("Editar cultura")
+                    print("--------------")
+                    print("Permite editar as dimensões da área de plantio das \nculturas cadastradas.")
+                    print("\n--------------------------------------------------------------")
 
-                if fazenda_culturas == [True, True]:
-                    print("Selecione qual cultura deseja editar:")
-                    print("1. " + culturas[0])
-                    print("2. " + culturas[1])
+                    cultura = -1
+
+                    print("Culturas cadastradas:")
+                    if fazenda_culturas[0]:
+                        print("1. " + culturas[0])
+                    if fazenda_culturas[1]:
+                        print("2. " + culturas[1])
 
                     cultura = int(input("Selecione a cultura a ser editada: "))
-
                     print("\n\n")
 
-                if fazenda_culturas == [True, False] or cultura == 1:
-                    print("Cultura plantada na fazenda:")
-                    print("Amendoim - Área de plantio: " + str(fazenda_area_amendoim[3]) + " ha")
-                    fazenda_area_amendoim[0] = float(input("Comprimento (m): "))
-                    fazenda_area_amendoim[1] = float(input("Largura (m): "))
-                    print("Amendoim: " + str(fazenda_culturas[0]) + " - Área útil: " + str(fazenda_area_amendoim[3]) + " ha")
-                    print("Insumos necessários para a cultura:")
-                    i = 0
-                    while i < len(insumos):
-                        fazenda_insumos_amendoim[i] = fazenda_area_amendoim[3] * quant_insumos_amendoim[i]
-                        print(insumos[i] + ": " + str(fazenda_insumos_amendoim[i]))
-                        i += 1
+                    # Trata a opção selecionada, baseada no index da cultura, para evitar repetição de código.
 
-                if fazenda_culturas == [False, True] or cultura == 2:
-                    print("Cultura plantada na fazenda:")
-                    print("Milho - Área de plantio: " + str(fazenda_area_milho[3]) + " ha")
-                    fazenda_area_milho[0] = float(input("Comprimento (m): "))
-                    fazenda_area_milho[1] = float(input("Largura (m): "))
-                    print("Milho: " + str(fazenda_culturas[1]) + " - Área útil: " + str(fazenda_area_milho[3]) + " ha")
-                    print("Insumos necessários para a cultura:")
-                    j = 0
-                    while j < len(insumos):
-                        fazenda_insumos_milho[j] = fazenda_area_milho[3] * quant_insumos_milho[j]
-                        print(insumos[j] + ": " + str(fazenda_insumos_milho[j]))
-                        j += 1
+                    if cultura in [1, 2]:
+                        cultura_index = cultura - 1
+                        cultura_nome = culturas[cultura_index]
 
-                if fazenda_culturas == [False, False]:
-                    input("Não há culturas cadastradas. Pressione Enter para continuar...\n")
+                        if not fazenda_culturas[cultura_index]:
+                            input("Cultura não cadastrada. Pressione Enter para continuar...\n")
+                            print("\n\n")
+                            break
 
-                    print("\n\n")
+                        print("\nEditando cultura: " + cultura_nome)
 
-            elif menu_gerenciar == 3:
-                print("Remover cultura")
+                        # Licença para usar operadores ternários.
 
-                if fazenda_culturas == [True, True]:
-                    print("Selecione qual cultura deseja remover:")
-                    print("1. " + culturas[0])
-                    print("2. " + culturas[1])
+                        fazenda_area = fazenda_area_amendoim if cultura_index == 0 else fazenda_area_milho
+                        quant_insumos = quant_insumos_amendoim if cultura_index == 0 else quant_insumos_milho
+                        fazenda_insumos = fazenda_insumos_amendoim if cultura_index == 0 else fazenda_insumos_milho
 
-                    cultura = int(input("Selecione a cultura a ser removida: "))  
+                        print(f"Área atual de plantio: {fazenda_area[3]} ha")
 
-                    print("\n\n")
+                        print("\nInforme as novas dimensões da área de plantio e ajuste de insumos:")
 
-                if fazenda_culturas == [True, False] or cultura == 1:
-                    fazenda_culturas[0] = False
-                    fazenda_area_amendoim = [0, 0, 0, 0]
-                    fazenda_insumos_amendoim = [0, 0, 0, 0, 0, 0, 0, 0, 0]
-                
-                if fazenda_culturas == [False, True] or cultura == 2:    
-                    fazenda_culturas[1] = False
-                    fazenda_area_milho = [0, 0, 0, 0]
-                    fazenda_insumos_milho = [0, 0, 0, 0, 0, 0, 0, 0, 0]
+                        fazenda_area[0] = float(input("Comprimento (m): "))
+                        fazenda_area[1] = float(input("Largura (m): "))
+
+                        fazenda_area[2] = fazenda_area[0] * fazenda_area[1]
+                        fazenda_area[3] = fazenda_area[2] * 0.9 / 10000
+                        print(f"\n{cultura_nome} - Nova área útil: {fazenda_area[3]} ha")
+
+                        print("\nRevisão dos insumos necessários para a cultura:")
+                        print("--------------------------------------------------------------")
+                        
+                        for i in range(len(insumos)):
+                            fazenda_insumos[i] = fazenda_area[3] * quant_insumos[i]
+                            print(f"{insumos[i]}: {fazenda_insumos[i]}")
 
                 else:
                     input("Não há culturas cadastradas. Pressione Enter para continuar...\n")
+                    print("\n\n")
 
+            elif menu_gerenciar == 3:
+
+                if fazenda_culturas != [False, False]:
+
+                    print("--------------------------------------------------------------\n")
+                    print("Remover cultura")
+                    print("\n--------------")
+
+                    cultura = -1
+
+                    print("Culturas cadastradas:")
+                    if fazenda_culturas[0]:
+                        print("1. " + culturas[0])
+                    if fazenda_culturas[1]:
+                        print("2. " + culturas[1])
+
+                    cultura = int(input("Selecione a cultura a ser removida: "))
+                    print("\n\n")
+
+                    if cultura in [1, 2]:
+
+                        cultura_index = cultura - 1
+                        cultura_nome = culturas[cultura_index]
+
+                        if not fazenda_culturas[cultura_index]:
+                            input("Cultura não cadastrada. Pressione Enter para continuar...\n")
+                            print("\n\n")
+                            break
+
+                        print("\nCultura: " + cultura_nome)
+
+                        fazenda_culturas[cultura_index] = False
+
+                        fazenda_area = fazenda_area_amendoim if cultura_index == 0 else fazenda_area_milho
+                        fazenda_insumos = fazenda_insumos_amendoim if cultura_index == 0 else fazenda_insumos_milho
+
+                        fazenda_area = [0, 0, 0, 0]
+                        fazenda_insumos = [0, 0, 0, 0, 0, 0, 0, 0, 0]
+
+                else:
+                    input("Não há culturas cadastradas. Pressione Enter para continuar...\n")
                     print("\n\n")
 
             elif menu_gerenciar == 9:
                 print("Voltar")
+                print("\n\n")
                 break
 
             elif menu_gerenciar == 0:
@@ -258,9 +289,11 @@ while menu_principal != 0:
 
     elif menu_principal == 2:
 
-    #Gerencir insumos
+        # Usando while / True
 
         while True:
+
+            #Menu Gerencir insumos
 
             menu_insumos = -1
 
@@ -268,9 +301,9 @@ while menu_principal != 0:
             print("Gerenciar insumos")
             print("-----------------")
             print("1. Listar insumos - Lista de insumos e necessidades cadastrados no sistema")
-            print("2. Inserir insumo")
-            print("3. Editar insumo")
-            print("4. Remover insumo")
+            print("2. Inserir insumo - Prmite cadastrar um novo insumo e suas necessidades")
+            print("3. Editar insumo - Permite ajustar as quantidades de insumos cadastrados")
+            print("4. Remover insumo - Permite excluir um insumo")
 
             if fazenda_culturas[0] or fazenda_culturas[1]:
                 print("5. Recalcular culturas")
@@ -295,7 +328,7 @@ while menu_principal != 0:
                 
                 print("Inserir insumo")
 
-                print(len(insumos))
+                # Inserindo itens em uma lista
 
                 insumo = input("Insumo: ")
                 insumos.append(insumo)
@@ -306,33 +339,40 @@ while menu_principal != 0:
                 quant_milho = float(input("Quantidade para milho (kg/ha): "))
                 quant_insumos_milho.append(quant_milho)
 
-                print(len(insumos))
-
             elif menu_insumos == 3:
                 print("Editar insumo")
                 insumo = input("Insumo: ")
+
                 if insumo in insumos:
                     index = insumos.index(insumo)
                     quant_amendoim = float(input("Quantidade para amendoim (kg/ha): "))
                     quant_insumos_amendoim[index] = quant_amendoim
                     quant_milho = float(input("Quantidade para milho (kg/ha): "))
                     quant_insumos_milho[index] = quant_milho
+
                 else:
                     print("Insumo não encontrado")
 
             elif menu_insumos == 4:
                 print("Remover insumo")
+
+                # Removendo itens de uma lista
+
                 insumo = input("Insumo: ") 
+
                 if insumo in insumos:
                     index = insumos.index(insumo)
                     insumos.remove(insumo)
                     quant_insumos_amendoim.pop(index)
                     quant_insumos_milho.pop(index)
+
                 else:
                     print("Insumo não encontrado")
 
             elif menu_insumos == 5:
                 print("Recalcular culturas")
+
+                # Usando match / case
 
                 match fazenda_culturas:
 
@@ -355,7 +395,6 @@ while menu_principal != 0:
                     case [False, False]:
 
                         print("Não há culturas cadastradas.\nPara inserir uma cultura, selecione a opção 1 no menu principal")
-
                         print("\n\n")
 
             elif menu_insumos == 9:
@@ -364,6 +403,7 @@ while menu_principal != 0:
                 break
 
             elif menu_insumos == 0:
+
                 menu_principal = 0
                 break
 
@@ -377,7 +417,9 @@ while menu_principal != 0:
     else:
         input("Opção inválida. Pressione Enter para continuar...\n")
         print("\n\n")
-    
+
+# Encerramento
+
 print("\n--------------------------------------------------------------")
 print("Agradecemos por utilizar o PyFarm.")
 print("--------------------------------------------------------------\n")
