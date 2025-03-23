@@ -9,7 +9,7 @@ Inicialmente, FIAP PyFarm oferece as seguintes funcionalidades:
 
 - Cadastro de até duas culturas, sendo uma de amendoim e uma de milho e cálculo da área disponível para plantio a partir dde suas dimensões nominais. 
 - Cálculo da quantidade dos insumos necessários à produção de um ano para esas culturas, a partir da área de plantio.
-- Exibição de informações meteorológicas relacionadas à região.
+
 
 
 Conteúdo
