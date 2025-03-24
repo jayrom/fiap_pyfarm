@@ -37,7 +37,7 @@ Essa seção foi incluída na aplicação Python como um exemplo de funcionalida
 A partir de dados históricos sobre o consumo de insumos da fazenda, fictícios no Python, informações estatísticas, como as exemplificadas no script R, poderiam ser de grande valia para o agricultor, permitindo estender o levantamento de dados para análises mais acertadas, como cruzamento com dados meteorológicos, análise localizada do solo etc.
 Dado o nível limitado de conhecimento sobre as linguagens e o tempo para entrega, a comunicação entre as duas aplicações não foi feita, limitando-se à cópia manual de dados.
 
-### Uso das linguagens
+## Uso das linguagens
 
 Sem dúvida, muito da solução desenvolvida poderia ser desenvolvida deforma mais simples e eficiente. Por outro lado, devido ao nosso conhecimento limitado das duas linguagens, optamos por empregar apenas os recursos que pudemos praticar nas aulas e alguns poucos desafios adicionais. 
 
