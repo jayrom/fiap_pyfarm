@@ -47,6 +47,8 @@ As aplicações foram desenvolvidas e testadas utilizando-se os seguintes requis
 
     `> python.exe pyfarm.py` ou, simplesmente, `> py pyfarm.py`
 
+### Script R
+
 ## Problemas conhecidos
 Alguns problems conhecidos:
 - Não há consistência para todas as entradas de dados.
