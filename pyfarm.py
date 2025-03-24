@@ -34,8 +34,33 @@ fazenda_insumos_amendoim = [0, 0, 0, 0, 0, 0, 0, 0, 0]
 # Quantidades de insumos, por hectare útil, por safra, para plantio de milho da fazenda, se houver.
 fazenda_insumos_milho = [0, 0, 0, 0, 0, 0, 0, 0, 0]
 
-# Abertura
+# Dados para R sobre o consumo histórico anual de calcário, em kg.
+consumo_calcario = [
+    {'ano': '2009', 'consumo': 5920},
+    {'ano': '2010', 'consumo': 5300},
+    {'ano': '2011', 'consumo': 6156},
+    {'ano': '2012', 'consumo': 6027},
+    {'ano': '2013', 'consumo': 5564},
+    {'ano': '2014', 'consumo': 5897},
+    {'ano': '2015', 'consumo': 5857},
+    {'ano': '2016', 'consumo': 6003},
+    {'ano': '2017', 'consumo': 5808},
+    {'ano': '2018', 'consumo': 4970},
+    {'ano': '2019', 'consumo': 6345},
+    {'ano': '2020', 'consumo': 5689},
+    {'ano': '2021', 'consumo': 5900},
+    {'ano': '2022', 'consumo': 5857},
+    {'ano': '2023', 'consumo': 5897},
+    {'ano': '2024', 'consumo': 6017}
+]
 
+# Dados de R sobre consumo de calcário.
+
+# Média de consumo de calcário, em kg/ha/ano, entre 2009 e 2024.
+media_calcario = 5825.438
+std_dev_calcario = 327.6
+
+# Abertura
 print("\n\n\n\n----------------------------------------------------------------------------\n")
 print("PyFarm - Fazenda Esperança")
 print("\n----------------------------------------------------------------------------\n")
@@ -339,6 +364,7 @@ while menu_principal != 0:
             if fazenda_culturas[0] or fazenda_culturas[1]:
                 print("5. Recalcular culturas")
 
+            print("6. Estatísticas de consumo de insumos - Base para implementações futuras") # Com dados de R
             print("9. Voltar")
             print("0. Sair")
 
@@ -385,6 +411,8 @@ while menu_principal != 0:
                 print("Editar insumo")
                 insumo = input("Insumo: ")
 
+                # Editando itens de uma lista
+                
                 if insumo in insumos:
                     index = insumos.index(insumo)
                     unidades[index] = input("Unidade de medida: ")
@@ -454,13 +482,27 @@ while menu_principal != 0:
                     print("Não há culturas cadastradas.\nPara inserir uma cultura, selecione a opção 1 no menu principal")
                     print("\n\n")
 
+            elif menu_insumos == 6:
+                print("Estatísticas de consumo de insumos")
+                print("--------------------------------------------------------------") # Com dados de R
+                
+                print("Consumo histórico anual de calcário")
+                for consumo in consumo_calcario:                
+                    print(f"{consumo['ano']}: {consumo['consumo']} kg/ha")
+                print("--------------------------------------------------------------")
+                print(f"Consumo médio de calcário: {media_calcario:.2f} kg/ha/ano")
+                print("--------------------------------------------------------------")
+                print(f"Desvio padrão: {std_dev_calcario:.2f} kg/ha/ano")
+                print("--------------------------------------------------------------")
+                print("""Por favor, veja o arquivo README.md para mais informações sobre a implementação de estatísticas de consumo de insumos.""")
+                print("\n\n")
+
             elif menu_insumos == 9:
                 print("Voltar")
                 print("\n\n")
                 break
 
             elif menu_insumos == 0:
-
                 menu_principal = 0
                 break
 
