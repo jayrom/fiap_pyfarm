@@ -167,7 +167,7 @@ while menu_principal != 0:
                         fazenda_area[0] = float(input("Comprimento (m): "))
                         fazenda_area[1] = float(input("Largura (m): "))
 
-                        # Cálculo da área disponível para plantio (considerados 90% da área total informada)
+                        # Cálculo da área disponível para plantio (considerados 90% da área total informada - Veja README.md)
                         fazenda_area[2] = fazenda_area[0] * fazenda_area[1]
                         fazenda_area[3] = fazenda_area[2] * 0.9 / 10000
 
