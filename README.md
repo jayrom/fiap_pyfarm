@@ -3,6 +3,7 @@ A simple python application for farmers.
 
 ## Conteúdo
 - [Descrição](#descrição)
+- [Documentação complementar](#documentação-complementar)
 - [Premissas](#premissas)
    - [Fazenda Esperança](#fazenda-esperança)
    - [Insumos](#insumos)
@@ -12,6 +13,7 @@ A simple python application for farmers.
    - [Aplicação Python](#aplicação-python)
    - [Script R](#script-r)
 - [Problemas conhecidos](#problemas-conhecidos)
+- Resumo de artigo: Uso de VANTs em Agricultura Digital
 - [Integrantes do grupo](#integrantes-do-grupo)
 
 ## Descrição
@@ -21,6 +23,10 @@ Inicialmente, FIAP PyFarm oferece as seguintes funcionalidades:
 
 - Cadastro de até duas culturas, sendo uma de amendoim e uma de milho e cálculo da área disponível para plantio a partir dde suas dimensões nominais. 
 - Cálculo da quantidade dos insumos necessários à produção de um ano para esas culturas, a partir da área de plantio.
+
+## Documentação complementar
+
+Além deste README, veja também uma breve demonstração das aplicações em Python e R, disponível em https://youtu.be/i01i73NDc-4.
 
 ## Premissas
 
@@ -78,12 +84,15 @@ As aplicações foram desenvolvidas e testadas utilizando-se os seguintes requis
 Alguns problems conhecidos:
 - Não há consistência para todas as entradas de dados.
 
+## Resumo de artigo: Uso de VANTs em Agricultura Digital
+- Consulte, no arquivo [resumo_uso_de_vants_na_agriculrura_de_precisao.pdf](resumo_uso_de_vants_na_agriculrura_de_precisao.pdf), o resumo do artigo Uso de veículos aéreos não tripulados (VANT) em agricultura de precisão. 
+
 ## Integrantes do grupo
 
-- [Edmilson Marciano](https://github.com/marciano64)
-- [Jayro Mazzi Junior](https://github.com/jayrom)
-- [Leonardo Camacho](leonardocamacho1983)
-- [Lucas Arcanjo](https://github.com/ArcanjoLucas00)
+- [Edmilson Marciano](https://github.com/marciano64) - RM565912
+- [Jayro Mazzi Junior](https://github.com/jayrom) - RM565576
+- [Leonardo Camacho](leonardocamacho1983) - RM565099
+- [Lucas Arcanjo](https://github.com/ArcanjoLucas00) - RM563353
 
 
 
