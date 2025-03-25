@@ -21,8 +21,8 @@ A simple python application for farmers.
 **FIAP PyFarm** é uma prposta de aplicação desenvolvida como desafio para o curso de Inteligência Artificial da FIAP, turma 1TIAOB, pela **Tião FarmTech Solutions** para impulsionar os recentes esforços de inovação tecnológica da **Fazenda Esperança**, em Ribeirão Preto, SP. 
 Inicialmente, FIAP PyFarm oferece as seguintes funcionalidades:
 
-- Cadastro de até duas culturas, sendo uma de amendoim e uma de milho e cálculo da área disponível para plantio a partir dde suas dimensões nominais. 
-- Cálculo da quantidade dos insumos necessários à produção de um ano para esas culturas, a partir da área de plantio.
+- Cadastro de até duas culturas, sendo uma de amendoim e uma de milho e cálculo da área disponível para plantio a partir de suas dimensões nominais. 
+- Cálculo da quantidade dos insumos necessários à produção de um ano para essas culturas, a partir da área de plantio.
 
 ## Documentação complementar
 
@@ -58,7 +58,7 @@ Dado o nível limitado de conhecimento sobre as linguagens e o tempo para entreg
 
 ## Uso das linguagens
 
-Sem dúvida, muito da solução desenvolvida poderia ser desenvolvida deforma mais simples e eficiente. Por outro lado, devido ao nosso conhecimento limitado das duas linguagens, optamos por empregar apenas os recursos que pudemos praticar nas aulas e alguns poucos desafios adicionais. 
+Sem dúvida, muito da solução desenvolvida poderia ser desenvolvida de forma mais simples e eficiente. Por outro lado, devido ao nosso conhecimento limitado das duas linguagens, optamos por empregar apenas os recursos que pudemos praticar nas aulas e alguns poucos desafios adicionais. 
 
 ## Requisitos do sistema
 
